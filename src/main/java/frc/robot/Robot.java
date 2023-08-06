@@ -10,37 +10,40 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
-
 public class Robot extends TimedRobot {
 
  public XboxController driverController = new XboxController(0);
 
+ // Variable type (public / private) + type of Motor Controller + = + new motorController(device ID, type of motor);  
  public CANSparkMax leftFront = new CANSparkMax( 2, CANSparkMaxLowLevel.MotorType.kBrushless);
  public CANSparkMax leftBack = new CANSparkMax( 1, CANSparkMaxLowLevel.MotorType.kBrushless);
- public CANSparkMax rightFront = new CANSparkMax( 3, CANSparkMaxLowLevel.MotorType.kBrushless);
- public CANSparkMax rightBack = new CANSparkMax( 4, CANSparkMaxLowLevel.MotorType.kBrushless);
-
- public RelativeEncoder leftEncoder = leftFront.getEncoder();
- public RelativeEncoder rightEncoder = rightFront.getEncoder();
-
  MotorControllerGroup leftControllerGroup = new MotorControllerGroup(leftFront, leftBack);
- MotorControllerGroup rightControllerGroup = new MotorControllerGroup(rightFront, rightBack);
+ public RelativeEncoder leftEncoder = leftFront.getEncoder();
 
- 
+// Define the two right motors, rightFrontID = 3, rightBackID = 4 
+
+
+// Define a motorControllerGroup and name it rightControllerGroup and add the two right motors to it
+
+
+// Deine an encoder for the right side of the robot
+
+
+
  public DifferentialDrive drive = new DifferentialDrive(leftControllerGroup, rightControllerGroup);
 
   @Override
   public void robotInit() {
     leftFront.restoreFactoryDefaults();
     leftBack.restoreFactoryDefaults();
-    rightFront.restoreFactoryDefaults();
-    rightBack.restoreFactoryDefaults();
-
-    rightControllerGroup.setInverted(true);
     leftControllerGroup.setInverted(false);
-
     leftEncoder.setPosition(0);
-    rightEncoder.setPosition(0);
+
+    //restore factory defaults for the right two motors
+
+    //set the rightMotoroControllerGroup as inverted
+
+    //make the position of the right Encoder at 0
   }
 
   @Override
